@@ -1,0 +1,13 @@
+name: pofc
+title:
+username:
+account: flavelloni
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3781116
+bundleId: 4349044
+url: https://flavelloni.shinyapps.io/pofc/
+when: 1615832732.18195
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: www/main.css
