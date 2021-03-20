@@ -9,7 +9,7 @@ probs_calculator_input <- function(){
       justified = FALSE,
       individual = TRUE,
       selected = 2,
-      status = "info",
+      status = "info", # makes the color light blue. Other values here would be 'primary' or 'success' etc
       checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = icon("remove", lib = "glyphicon"))
     )
     

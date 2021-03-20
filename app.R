@@ -1,3 +1,9 @@
+rm(list=objects())
+
+# shiny dashboard tutorial:
+# http://rstudio.github.io/shinydashboard/get_started.html
+# commit this code: git push https://Flavelloni@github.com/Flavelloni/OFC.git
+
 library(shiny)
 library(shinydashboard)
 library(shinyWidgets) #fuer select input picker
@@ -13,6 +19,8 @@ source("performanceAnalysis.R")
 
 
 ui <- shinydashboard::dashboardPage(
+  
+  skin = "black",
   
   # header
   shinydashboard::dashboardHeader(title = "Flavelloni's Pineapple-Rechner"),
@@ -39,7 +47,11 @@ ui <- shinydashboard::dashboardPage(
       , tabItem(
         tabName = "performanceAnalysis",
         fluidRow(performanceAnalysisUIInput()),
-        performanceAnalysisOutput(totalPoints=9999, nbrOfRounds=9999)
+        fluidRow(box("Die Wahrscheinlichkeit, dass bei gleich guten Spielern
+                     eine solche (oder groessere) Punktedifferenz besteht,
+                     liegt bei: ")),
+        fluidRow(valueBoxOutput("performanceBox"))
+        
       )
     )
     
@@ -73,7 +85,31 @@ server <- function(input, output) {
     rhandsontable(probs())
   )
   
-  #output$performanceAnalysisResult <- 999
+  # performance Analysis
+  performanceAnalysisResult <- reactive({
+    res <- performanceAnalysisOutput(input$totalPoints, input$nbrOfRounds)
+  })
+  
+  output$performanceBox <- shinydashboard::renderValueBox({
+    res <- performanceAnalysisResult()
+    if(res<0.05){
+      color <- "red"
+    } else if(res<0.1){
+      color <- "orange"
+    } else {
+      color <- "green"
+    }
+      
+    res <- res %>% formattable::percent()
+    
+    valueBox(
+      value = res,
+      subtitle = "Performance Bewertung",
+      icon = icon("glasses"),
+      color=color
+    )
+  })
+    
   
   
 }
