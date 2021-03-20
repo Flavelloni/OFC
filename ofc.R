@@ -80,28 +80,28 @@ overview <- function(rnd, outs, runners){
   # the vector the function is applied to contains the corresponding streets
   if(rnd==1){
     params <- tibble(
-      `same card` = list(1, c(1, NA, NA))
+      `againstFL` = list(1, c(1, NA, NA))
       ,`2Handed`  = list(2, c(1, 2, NA))
       ,`3Handed`  = list(3, c(1, 2, 3))
     )
   }
   if(rnd==2){
     params <- tibble(
-      `same card` = list(1, c(2, NA, NA))
+      `againstFL` = list(1, c(2, NA, NA))
       ,`2Handed`  = list(2, c(3, 4, NA))
       ,`3Handed`  = list(3, c(4, 5, 6))
     )
   }
   if(rnd==3){
     params <- tibble(
-      `same card` = list(1, c(3, NA, NA))
+      `againstFL` = list(1, c(3, NA, NA))
       ,`2Handed`  = list(2, c(5, 6, NA))
       ,`3Handed`  = list(3, c(7, 8, 9))
     )
   }
   if(rnd==4){
     params <- tibble(
-      `same card` = list(1, c(4, NA, NA))
+      `againstFL` = list(1, c(4, NA, NA))
       ,`2Handed`  = list(2, c(7, 8, NA))
       ,`3Handed`  = list(3, c(10, 11, 12))
     )
